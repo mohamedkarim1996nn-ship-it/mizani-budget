@@ -392,7 +392,7 @@ function safeRender(){
     console.error('Mizani render error:',e);
     const t=$('saveToast');
     if(t){
-      t.textContent='تم الحفظ، لكن حدث خطأ في تحديث العرض';
+      t.textContent='تم الحفظ، لكن حدث خطأ في تحديث العرض: '+(e?.message||'خطأ غير معروف');
       t.classList.add('show');
       clearTimeout(window.__saveToastTimer);
       window.__saveToastTimer=setTimeout(()=>{t.classList.remove('show');t.textContent='تم الحفظ ✓'},2600);
@@ -548,7 +548,7 @@ function saveEditedTransaction(tid){
 function cycleElapsedDays(){const c=currentCycle(),now=new Date();return Math.max(1,Math.ceil((Math.min(now,c.end)-c.start+1)/86400000))}
 function averageDailyVariableSpend(){return currentVariableSpend()/cycleElapsedDays()}
 function currentVariableSpend(){return cycleTx('expense').filter(t=>!t.fixedId).reduce((a,t)=>a+(+t.amount||0),0)}
-function projectedEndBalance(){return safe()-averageDailyVariableSpend()*cycleDaysLeft()}
+function projectedEndBalance(){return safe()-averageDailyVariableSpend()*daysLeft()}
 function envelopeSpent(env){return cycleTx('expense').filter(t=>!t.fixedId&&String(t.category||'').trim()===String(env.category||'').trim()).reduce((a,t)=>a+(+t.amount||0),0)}
 function monthsUntil(month){const now=new Date(),cur=now.getMonth()+1;let d=month-cur;if(d<0)d+=12;return d}
 function envelopeCard(env,full){
@@ -561,11 +561,11 @@ function seasonalRow(s,full){
 }
 function renderPlanning(plan){
   ensurePlanningState();
-  const avg=averageDailyVariableSpend(),proj=avg*cycleDaysLeft(),end=projectedEndBalance();
+  const avg=averageDailyVariableSpend(),proj=avg*daysLeft(),end=projectedEndBalance();
   forecastAmount.textContent=fmt(end);forecastAmount.className='forecast-number '+(end<0?'forecast-bad':end<100000?'forecast-warn':'forecast-good');
   forecastChip.textContent=end<0?'ضغط متوقع':end<100000?'هامش ضيق':'وضع جيد';forecastChip.className='chip '+(end<0?'red':end<100000?'yellow':'');
   forecastNote.textContent=end<0?'بهذا المعدل ستحتاج لتقليل الصرف أو زيادة الدخل الفعلي قبل نهاية الدورة.':'التقدير يتغير تلقائيًا كلما سجلت حركة جديدة.';
-  avgDailySpend.textContent=fmt(avg);projectedSpend.textContent=fmt(proj);forecastSafeNow.textContent=fmt(safe());forecastDays.textContent=cycleDaysLeft()+' يوم';
+  avgDailySpend.textContent=fmt(avg);projectedSpend.textContent=fmt(proj);forecastSafeNow.textContent=fmt(safe());forecastDays.textContent=daysLeft()+' يوم';
   envelopePreview.innerHTML=S.envelopes.length?S.envelopes.slice(0,4).map(e=>envelopeCard(e,false)).join(''):'<div class="card plan-empty" style="grid-column:1/-1">لم تضف مغلفات بعد.</div>';
   envelopeList.innerHTML=S.envelopes.length?S.envelopes.map(e=>envelopeCard(e,true)).join(''):'<div class="card plan-empty">لا توجد مغلفات.</div>';
   const seas=S.seasonal.slice().sort((a,b)=>(a.month||12)-(b.month||12));
