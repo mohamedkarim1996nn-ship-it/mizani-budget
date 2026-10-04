@@ -1,0 +1,756 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0F766E"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ميزانيتي"><link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon-192.png"><title>ميزانيتي</title><style>
+:root{--bg:#f5f7fa;--card:#fff;--text:#10212b;--muted:#667985;--primary:#0f766e;--line:#e5eaee;--danger:#c0392b;--warn:#a16207;--good:#15803d;--blue:#2563eb;--shadow:0 8px 28px rgba(16,33,43,.08)}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:980px;margin:auto;min-height:100vh;padding-bottom:90px}header{position:sticky;top:0;z-index:5;background:rgba(245,247,250,.94);backdrop-filter:blur(12px);padding:18px;border-bottom:1px solid var(--line)}.brand{display:flex;justify-content:space-between;align-items:center}.brand h1{margin:0}.brand small{color:var(--muted)}.pill{border:0;border-radius:999px;padding:9px 13px;background:#e6fffb;color:var(--primary);font-weight:800}main{padding:16px}.hero{background:linear-gradient(135deg,#0f766e,#0b5f59);color:white;border-radius:22px;padding:20px;box-shadow:var(--shadow)}.hero .top,.row,.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.big{font-size:34px;font-weight:900}.sub,.muted{color:var(--muted);font-size:12px}.hero .sub{color:#d6f4ef}.hero-grid,.grid,.quick,.allocation{display:grid;gap:9px}.hero-grid{grid-template-columns:repeat(3,1fr);margin-top:16px}.hero-mini{background:rgba(255,255,255,.12);padding:11px;border-radius:14px}.hero-mini b{display:block;font-size:16px}.grid{grid-template-columns:repeat(4,1fr);margin:12px 0}.stat,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}.stat{padding:14px}.stat .n{font-size:20px;font-weight:900}.section{margin-top:18px}.section-head h3{margin:0}.card{padding:14px;margin-bottom:10px}.amount{font-weight:900}.good{color:var(--good)}.danger{color:var(--danger)}.warn{color:var(--warn)}.chip{display:inline-block;border-radius:999px;padding:5px 9px;background:#f0fdfa;color:var(--primary);font-size:11px;font-weight:800}.chip.red{background:#fef2f2;color:var(--danger)}.chip.yellow{background:#fffbeb;color:var(--warn)}.btn{border:0;border-radius:14px;padding:12px 14px;font-weight:900;background:var(--primary);color:#fff}.btn.secondary{background:#eef4f4;color:var(--primary)}.btn.danger{background:#fef2f2;color:var(--danger)}.linkbtn{border:0;background:transparent;color:var(--primary);font-weight:800}.quick{grid-template-columns:repeat(4,1fr)}.fab{position:fixed;left:18px;bottom:82px;width:56px;height:56px;border-radius:18px;border:0;background:var(--primary);color:#fff;font-size:28px;z-index:6}nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;z-index:8}nav .bar{max-width:980px;width:100%;display:grid;grid-template-columns:repeat(5,1fr)}nav button{border:0;background:transparent;padding:10px 4px;color:var(--muted);font-size:11px;font-weight:800}nav button.active{color:var(--primary)}nav b{display:block;font-size:20px}.view{display:none}.view.active{display:block}.modal{position:fixed;inset:0;background:rgba(8,20,26,.52);z-index:50;display:none;align-items:flex-end;justify-content:center}.modal.show{display:flex}.sheet{width:min(100%,720px);max-height:92vh;overflow:auto;background:#fff;border-radius:24px 24px 0 0;padding:18px}.sheet h3{margin-top:0}label{display:block;font-size:12px;color:var(--muted);font-weight:800;margin:12px 0 5px}input,select,textarea{width:100%;border:1px solid #dbe3e8;border-radius:13px;padding:12px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;margin-top:16px}.actions .btn{flex:1}.empty{text-align:center;padding:24px;color:var(--muted)}.tx{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}.tx-icon{width:36px;height:36px;border-radius:12px;background:#f0fdfa;display:grid;place-items:center}.filters{display:flex;gap:7px;overflow:auto}.filters button{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 11px;font-weight:800;color:var(--muted)}.filters button.active{background:var(--primary);color:#fff}.notice{background:#fffbeb;color:#854d0e;border:1px solid #fde68a;border-radius:15px;padding:11px;font-size:12px;margin:10px 0}.allocation{grid-template-columns:repeat(4,1fr);margin-top:10px}.allocation div{background:#f8fafc;border-radius:12px;padding:9px;text-align:center}.progress{height:9px;background:#edf1f3;border-radius:99px;overflow:hidden;margin-top:10px}.progress i{display:block;height:100%;background:var(--primary)}@media(max-width:720px){.grid{grid-template-columns:1fr 1fr}.quick{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.allocation{grid-template-columns:1fr 1fr}}
+
+/* ===== Professional UI v4 ===== */
+:root{
+  --bg:#eef4f2;
+  --bg2:#f8faf9;
+  --card:#ffffff;
+  --text:#14242d;
+  --muted:#6c7d84;
+  --primary:#0e766e;
+  --primary-2:#095f59;
+  --primary-soft:#e7f6f3;
+  --line:#dfe8e5;
+  --shadow:0 12px 34px rgba(22,44,50,.07);
+  --shadow-sm:0 5px 16px rgba(22,44,50,.055);
+}
+body{
+  background:
+    radial-gradient(circle at 90% -8%, color-mix(in srgb,var(--primary) 10%,transparent) 0 22%, transparent 23%),
+    linear-gradient(180deg,var(--bg) 0%,var(--bg2) 42%,var(--bg2) 100%);
+  background-attachment:fixed;
+}
+body[data-theme="ocean"]{--bg:#edf2f8;--bg2:#f8fafc;--primary:#315d9b;--primary-2:#234978;--primary-soft:#eaf0fb;--line:#dbe4f0}
+body[data-theme="sand"]{--bg:#f4f0e7;--bg2:#fbfaf7;--primary:#8a6535;--primary-2:#6d4e27;--primary-soft:#f6eddf;--line:#e8dfd1}
+body[data-theme="graphite"]{--bg:#edf0f2;--bg2:#f7f8f9;--primary:#465a65;--primary-2:#33434b;--primary-soft:#e8eef1;--line:#dce3e7}
+body.dark{
+  --bg:#0f181c;--bg2:#111d21;--card:#17252a;--text:#eef7f5;--muted:#9eb1b3;
+  --line:#294047;--shadow:0 12px 34px rgba(0,0,0,.20);--shadow-sm:0 5px 16px rgba(0,0,0,.16);
+}
+body.dark header,body.dark nav{background:rgba(17,29,33,.93)}
+body.dark .stat,body.dark .card,body.dark .sheet,body.dark input,body.dark select,body.dark textarea,body.dark .filters button{background:var(--card);color:var(--text)}
+body.dark .btn.secondary{background:#21363b;color:#b7e3dc}
+body.dark .allocation div{background:#1c2d32}
+body.dark .tx-icon{background:#20383a}
+body.dark .progress{background:#25383d}
+header{
+  background:color-mix(in srgb,var(--bg2) 90%,transparent);
+  box-shadow:0 1px 0 rgba(0,0,0,.02);
+}
+.brand h1{font-size:28px;letter-spacing:-.7px}
+.brand small{display:block;margin-top:3px}
+.brand-badge{display:inline-flex;align-items:center;gap:6px;margin-top:8px;padding:5px 10px;border-radius:999px;background:var(--primary-soft);color:var(--primary);font-size:11px;font-weight:900}
+.pill{background:var(--primary-soft);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--primary) 12%,transparent)}
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 18px 46px color-mix(in srgb,var(--primary) 24%,transparent);
+}
+.hero:after{
+  content:"";position:absolute;width:210px;height:210px;border-radius:50%;
+  left:-70px;top:-95px;background:rgba(255,255,255,.07)
+}
+.hero .top,.hero-grid{position:relative;z-index:1}
+.stat,.card{box-shadow:var(--shadow-sm);transition:.18s ease}
+.stat{min-height:92px;display:flex;flex-direction:column;justify-content:center}
+.stat .n{letter-spacing:-.35px}
+.section-head{margin-bottom:10px}
+.section-head h3{font-size:18px;letter-spacing:-.2px}
+.quick .btn{min-height:50px;box-shadow:var(--shadow-sm)}
+.btn{transition:transform .12s ease,opacity .12s ease,box-shadow .12s ease}
+.btn:active{transform:scale(.98)}
+.card{border-color:var(--line)}
+.allocation div{background:color-mix(in srgb,var(--bg2) 82%,var(--primary-soft));border:1px solid color-mix(in srgb,var(--line) 75%,transparent)}
+.meter-card{padding:16px}
+.meter-row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+.meter-row strong{font-size:18px}
+.meter-label{font-size:12px;color:var(--muted)}
+.progress.bigbar{height:12px;margin-top:12px}
+.progress.bigbar i{border-radius:99px;transition:width .3s ease}
+.progress.warnbar i{background:var(--warn)}
+.progress.dangerbar i{background:var(--danger)}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.mini-box{padding:10px 12px;border-radius:14px;background:var(--primary-soft);border:1px solid color-mix(in srgb,var(--primary) 10%,transparent)}
+.mini-box b{display:block;font-size:15px}
+.mini-box span{font-size:11px;color:var(--muted)}
+nav{background:color-mix(in srgb,var(--card) 95%,transparent);backdrop-filter:blur(16px);padding-bottom:max(0px,env(safe-area-inset-bottom))}
+nav button{padding-top:9px;padding-bottom:9px}
+nav button.active{background:var(--primary-soft);border-radius:14px;margin:5px 3px}
+.sheet{border:1px solid var(--line);box-shadow:0 -18px 55px rgba(0,0,0,.18)}
+.theme-swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.theme-choice{border:1px solid var(--line);border-radius:14px;padding:10px 6px;background:var(--card);text-align:center;color:var(--text)}
+.theme-choice i{display:block;width:24px;height:24px;margin:0 auto 6px;border-radius:50%;border:2px solid rgba(255,255,255,.8);box-shadow:0 0 0 1px var(--line)}
+.theme-choice.active{outline:2px solid var(--primary);outline-offset:1px}
+.switch-row{display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid var(--line);padding:12px;border-radius:14px;margin-top:10px}
+.switch-row input{width:22px;height:22px}
+@media(max-width:720px){
+  main{padding:14px 12px}
+  .brand h1{font-size:26px}
+  .hero{border-radius:24px}
+  .grid{gap:8px}
+  .stat{padding:12px;min-height:88px}
+  .stat .n{font-size:18px}
+}
+
+
+/* ===== Professional Finance UX v5 ===== */
+.alert-center{display:grid;gap:8px}
+.smart-alert{display:flex;gap:10px;align-items:flex-start;padding:12px 13px;border-radius:15px;border:1px solid var(--line);background:var(--card)}
+.smart-alert .ico{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;flex:0 0 auto;background:var(--primary-soft)}
+.smart-alert.gooda{border-color:#bbf7d0;background:#f0fdf4}
+.smart-alert.warna{border-color:#fde68a;background:#fffbeb}
+.smart-alert.bada{border-color:#fecaca;background:#fef2f2}
+body.dark .smart-alert.gooda,body.dark .smart-alert.warna,body.dark .smart-alert.bada{background:var(--card)}
+.smart-alert b{display:block;margin-bottom:2px}
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.summary-box{padding:12px;border-radius:15px;background:color-mix(in srgb,var(--primary-soft) 60%,var(--card));border:1px solid var(--line)}
+.summary-box b{display:block;font-size:17px;margin-top:4px}
+.summary-box span{font-size:11px;color:var(--muted)}
+.ring-wrap{display:flex;align-items:center;gap:16px}
+.ring{
+  --p:0;
+  width:76px;height:76px;border-radius:50%;
+  display:grid;place-items:center;
+  background:conic-gradient(var(--primary) calc(var(--p)*1%),color-mix(in srgb,var(--line) 80%,transparent) 0);
+  position:relative;flex:0 0 auto
+}
+.ring:after{content:"";position:absolute;inset:8px;border-radius:50%;background:var(--card)}
+.ring b{position:relative;z-index:1;font-size:15px}
+.tx-tools{display:grid;grid-template-columns:1fr auto;gap:8px;margin:10px 0}
+.searchbox{position:relative}
+.searchbox input{padding-right:38px}
+.searchbox:before{content:"⌕";position:absolute;right:13px;top:10px;color:var(--muted);font-size:20px;z-index:1}
+.tx-more{border:0;background:transparent;color:var(--muted);font-size:20px;padding:6px 8px;border-radius:10px}
+.tx-more:active{background:var(--primary-soft)}
+.tx-actions{display:flex;gap:7px;margin-top:12px}
+.kpi-status{display:flex;align-items:center;gap:7px;margin-top:7px;font-size:12px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--good);display:inline-block}
+.dot.warn{background:var(--warn)}.dot.bad{background:var(--danger)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.compare-card{padding:12px;border-radius:15px;border:1px solid var(--line);background:var(--card)}
+.compare-card b{font-size:17px;display:block;margin-top:5px}
+.undo-toast{position:fixed;bottom:92px;right:50%;transform:translateX(50%) translateY(20px);z-index:60;background:#17242b;color:#fff;padding:11px 14px;border-radius:14px;box-shadow:0 14px 35px rgba(0,0,0,.22);display:flex;gap:12px;align-items:center;opacity:0;pointer-events:none;transition:.2s}
+.undo-toast.show{opacity:1;pointer-events:auto;transform:translateX(50%) translateY(0)}
+.undo-toast button{border:0;background:transparent;color:#9ff3e5;font-weight:900}
+body.dark .undo-toast{background:#eef7f5;color:#14242d}
+@media(max-width:720px){
+  .summary-grid{grid-template-columns:1fr 1fr}
+  .compare{grid-template-columns:1fr}
+}
+
+
+/* ===== Outer background customization v6 ===== */
+body[data-outer-bg="mist"]{background:linear-gradient(180deg,#eef2f4 0%,#f7f9fa 55%,#fbfcfc 100%)}
+body[data-outer-bg="sky"]{background:linear-gradient(180deg,#eaf3f8 0%,#f5f9fb 55%,#fbfdfe 100%)}
+body[data-outer-bg="mint"]{background:linear-gradient(180deg,#eaf5f0 0%,#f6faf8 55%,#fbfdfc 100%)}
+body[data-outer-bg="sandlight"]{background:linear-gradient(180deg,#f4efe6 0%,#faf8f3 55%,#fdfcf9 100%)}
+body[data-outer-bg="white"]{background:#ffffff}
+body[data-outer-bg="custom"]{background:var(--custom-outer-bg,#eef4f2)}
+.outer-preview{height:42px;border-radius:13px;border:1px solid var(--line);margin-top:8px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+
+
+/* Planning tools v7 */
+.forecast-card{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 9%,var(--card)),var(--card))}
+.forecast-number{font-size:30px;font-weight:950;letter-spacing:-.6px;margin:4px 0}
+.forecast-note{font-size:12px;color:var(--muted)}
+.forecast-good{color:var(--good)}.forecast-warn{color:var(--warn)}.forecast-bad{color:var(--danger)}
+.envelope-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.envelope{border:1px solid var(--line);border-radius:16px;padding:12px;background:var(--card)}
+.envelope-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.envelope .amt{font-size:18px;font-weight:950;margin-top:4px}
+.envelope small{color:var(--muted)}
+.seasonal-item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.seasonal-item:last-child{border-bottom:0}
+.badge-months{font-size:11px;font-weight:800;background:var(--primary-soft);color:var(--primary);padding:5px 8px;border-radius:999px}
+.plan-tabs{display:flex;gap:7px;overflow:auto;padding-bottom:3px}
+.plan-tabs button{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:8px 11px;font-weight:850}
+.plan-tabs button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.plan-empty{padding:20px;text-align:center;color:var(--muted)}
+@media(max-width:720px){.envelope-grid{grid-template-columns:1fr}}
+
+
+/* ===== Phase 3 v8: security, debts, backup health ===== */
+.security-card{border:1px solid var(--line);background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 7%,var(--card)),var(--card))}
+.debt-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.debt-card{border:1px solid var(--line);border-radius:16px;padding:13px;background:var(--card)}
+.debt-card .topline{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.debt-card .remain{font-size:20px;font-weight:950;margin:6px 0}
+.debt-card small{color:var(--muted)}
+.lock-screen{position:fixed;inset:0;z-index:999;background:linear-gradient(145deg,#eef3f9,#f8fafc);display:none;place-items:center;padding:20px}
+.lock-screen.show{display:grid}
+.lock-box{width:min(100%,390px);background:#fff;border:1px solid #dbe4f0;border-radius:24px;padding:22px;box-shadow:0 24px 70px rgba(30,55,90,.14);text-align:center}
+.lock-logo{width:68px;height:68px;border-radius:20px;margin:0 auto 14px;display:grid;place-items:center;background:#eaf0fb;color:#315d9b;font-size:28px}
+.pin-input{letter-spacing:10px;text-align:center;font-size:22px;font-weight:900}
+.backup-health{display:flex;gap:10px;align-items:flex-start}
+.backup-health .ico{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--primary-soft);flex:0 0 auto}
+.due-list{display:grid;gap:8px}
+.due-item{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.due-item:last-child{border-bottom:0}
+@media(max-width:720px){.debt-grid{grid-template-columns:1fr}}
+body.dark .lock-screen{background:#0f181c}
+body.dark .lock-box{background:#17252a;color:#eef7f5;border-color:#294047}
+
+</style></head><body>
+<div class="lock-screen" id="lockScreen">
+  <div class="lock-box">
+    <div class="lock-logo">🔒</div>
+    <h2 style="margin:0 0 6px">ميزانيتي</h2>
+    <div class="muted" style="margin-bottom:14px">أدخل رمز PIN لفتح التطبيق</div>
+    <input id="unlockPin" class="pin-input" type="password" inputmode="numeric" maxlength="6" placeholder="••••">
+    <button class="btn" style="width:100%;margin-top:12px" onclick="unlockApp()">فتح</button>
+    <div class="muted" id="unlockMessage" style="margin-top:10px"></div>
+  </div>
+</div>
+<div class="app"><header><div class="brand"><div><h1>ميزانيتي</h1><small>دورة مالية من يوم 19 إلى 18</small><span class="brand-badge">● إدارة ذكية للدخل والمصروف</span></div><button class="pill" onclick="openSettings()">⚙️ الإعدادات</button></div></header><main>
+<section id="home" class="view active"><div class="hero"><div class="top"><div><div>المتاح الآمن للصرف</div><div class="big" id="safeSpend">0 د.ع</div><div class="sub" id="cycleText"></div></div><span class="chip" id="daysLeft">0 يوم</span></div><div class="hero-grid"><div class="hero-mini"><b id="receivedIncome">0</b><span>الدخل المستلم</span></div><div class="hero-mini"><b id="spentTotal">0</b><span>المصروف</span></div><div class="hero-mini"><b id="savedTotal">0</b><span>المدخر</span></div></div></div>
+<div class="grid"><div class="stat"><div class="n" id="fixedRemaining">0</div><div class="muted">التزامات ثابتة متبقية</div></div><div class="stat"><div class="n" id="variableRemaining">0</div><div class="muted">دخل خاص متوقع لاحقًا</div></div><div class="stat"><div class="n" id="dailySafe">0</div><div class="muted">صرف يومي آمن الآن</div></div><div class="stat"><div class="n" id="weeklySafe">0</div><div class="muted">حد أسبوعي آمن الآن</div></div><div class="stat"><div class="n" id="plannedWeekly">0 د.ع</div><div class="muted">الحد الأسبوعي المخطط</div></div><div class="stat"><div class="n" id="savingRate">0%</div><div class="muted">نسبة الادخار</div></div></div>
+
+
+<div class="section">
+  <div class="section-head"><h3>المساعد المالي</h3><span class="chip">تلقائي</span></div>
+  <div id="smartAlerts" class="alert-center"></div>
+</div>
+
+<div class="section">
+  <div class="section-head"><h3>ملخص الدورة الحالية</h3><span class="chip" id="cycleHealth">مستقر</span></div>
+  <div class="card">
+    <div class="ring-wrap">
+      <div class="ring" id="incomeRing"><b id="incomeRingText">0%</b></div>
+      <div class="grow">
+        <b>تقدم الدخل المتوقع</b>
+        <div class="muted">من إجمالي 3,000,000 د.ع المتوقع خلال الدورة</div>
+        <div class="kpi-status"><span class="dot" id="cycleDot"></span><span id="cycleStatusText">الوضع المالي ضمن الخطة</span></div>
+      </div>
+    </div>
+    <div class="summary-grid" style="margin-top:14px">
+      <div class="summary-box"><span>الدخل المستلم</span><b id="sumIncome">0</b></div>
+      <div class="summary-box"><span>المصروف المتغير</span><b id="sumVariableSpend">0</b></div>
+      <div class="summary-box"><span>الثوابت المدفوعة</span><b id="sumFixedPaid">0</b></div>
+      <div class="summary-box"><span>الادخار</span><b id="sumSaving">0</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-head"><h3>توقع نهاية الدورة</h3><span class="chip" id="forecastChip">تقديري</span></div>
+  <div class="card forecast-card">
+    <div class="muted">إذا استمريت بنفس معدل الصرف الحالي، المتوقع أن يبقى لديك يوم 18:</div>
+    <div class="forecast-number" id="forecastAmount">0 د.ع</div>
+    <div class="forecast-note" id="forecastNote">يتم الحساب من إنفاقك الفعلي وعدد الأيام المتبقية.</div>
+    <div class="summary-grid" style="margin-top:12px">
+      <div class="summary-box"><span>متوسط الصرف اليومي</span><b id="avgDailySpend">0</b></div>
+      <div class="summary-box"><span>الصرف المتوقع المتبقي</span><b id="projectedSpend">0</b></div>
+      <div class="summary-box"><span>المتاح الآمن الآن</span><b id="forecastSafeNow">0</b></div>
+      <div class="summary-box"><span>الأيام المتبقية</span><b id="forecastDays">0</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-head"><h3>المغلفات المالية</h3><button class="linkbtn" onclick="showView('more');setTimeout(()=>document.getElementById('planningTools')?.scrollIntoView({behavior:'smooth'}),100)">إدارة</button></div>
+  <div id="envelopePreview" class="envelope-grid"></div>
+</div>
+
+<div class="section">
+  <div class="section-head"><h3>المصاريف الموسمية</h3><button class="linkbtn" onclick="showView('more');setTimeout(()=>document.getElementById('planningTools')?.scrollIntoView({behavior:'smooth'}),100)">إدارة</button></div>
+  <div class="card" id="seasonalPreview"></div>
+</div>
+
+<div class="section">
+  <div class="section-head"><h3>الديون والسلف</h3><button class="linkbtn" onclick="showView('more');setTimeout(()=>document.getElementById('debtTools')?.scrollIntoView({behavior:'smooth'}),100)">إدارة</button></div>
+  <div class="debt-grid" id="debtPreview"></div>
+</div>
+
+<div class="section">
+  <div class="section-head"><h3>المواعيد المالية القادمة</h3><span class="chip">30 يوم</span></div>
+  <div class="card due-list" id="upcomingMoneyDates"></div>
+</div>
+<div class="section">
+  <div class="section-head"><h3>متابعة هذا الأسبوع</h3><span class="chip" id="weekStatusChip">ضمن الخطة</span></div>
+  <div class="card meter-card">
+    <div class="meter-row">
+      <div><div class="meter-label">المصروف المرن هذا الأسبوع</div><strong id="weekSpent">0 د.ع</strong></div>
+      <div style="text-align:left"><div class="meter-label">الحد الأسبوعي المخطط</div><strong id="weekLimit">0 د.ع</strong></div>
+    </div>
+    <div class="progress bigbar" id="weekProgress"><i style="width:0%"></i></div>
+    <div class="mini-grid">
+      <div class="mini-box"><b id="weekRemaining">0 د.ع</b><span>المتبقي للأسبوع</span></div>
+      <div class="mini-box"><b id="weekPercent">0%</b><span>نسبة الاستخدام</span></div>
+    </div>
+  </div>
+</div>
+<div class="section"><div class="section-head"><h3>إضافة سريعة</h3></div><div class="quick"><button type="button" class="btn" onclick="openIncome()">+ دخل</button><button type="button" class="btn secondary" onclick="openExpense()">− مصروف</button><button type="button" class="btn secondary" onclick="openFixed()">📌 التزام ثابت</button><button type="button" class="btn secondary" onclick="openGoal()">🎯 هدف ادخار</button></div></div>
+<div class="section">
+  <div class="section-head"><h3>صرفيات المليونين</h3><button type="button" class="btn secondary" onclick="openSideExpense()">+ صرف من الدخل الخاص</button></div>
+  <div class="card">
+    <div class="allocation">
+      <div><b id="sideReceivedView">0</b><span class="muted">المستلم من المليونين</span></div>
+      <div><b id="sideSpentView">0</b><span class="muted">المصروف منها</span></div>
+      <div><b id="sideBalanceView">0</b><span class="muted">المتبقي المتاح منها</span></div>
+      <div><b id="sideTargetRemainView">0</b><span class="muted">المتبقي للاستلام</span></div>
+    </div>
+    
+    <div style="margin-top:14px">
+      <div class="meter-row"><span class="meter-label">تقدم استلام المليونين</span><b id="sideReceivePercent">0%</b></div>
+      <div class="progress bigbar"><i id="sideReceiveBar" style="width:0%"></i></div>
+      <div class="meter-row" style="margin-top:11px"><span class="meter-label">المصروف من المبلغ المستلم</span><b id="sideSpendPercent">0%</b></div>
+      <div class="progress bigbar"><i id="sideSpendBar" style="width:0%"></i></div>
+    </div>
+<div id="sideExpenseList" style="margin-top:10px"></div>
+  </div>
+</div><div id="incomeAdvisorWrap"></div>
+<div class="section">
+  <div class="section-head"><h3>مقارنة مع الدورة السابقة</h3></div>
+  <div class="compare">
+    <div class="compare-card"><span class="muted">المصروف</span><b id="compareExpense">لا توجد بيانات كافية</b><div class="muted" id="compareExpenseNote"></div></div>
+    <div class="compare-card"><span class="muted">الادخار</span><b id="compareSaving">لا توجد بيانات كافية</b><div class="muted" id="compareSavingNote"></div></div>
+  </div>
+</div>
+<div class="section"><div class="section-head"><h3>الالتزامات القادمة</h3><button class="linkbtn" onclick="showView('fixed')">عرض الكل</button></div><div id="upcomingFixed"></div></div><div class="section"><div class="section-head"><h3>أهداف الادخار</h3><button class="linkbtn" onclick="showView('goals')">عرض الكل</button></div><div id="goalPreview"></div></div></section>
+<section id="transactions" class="view"><div class="section-head"><h3>الحركات المالية</h3><span class="chip" id="txCountChip">0 حركة</span></div>
+<div class="tx-tools">
+  <div class="searchbox"><input id="txSearch" placeholder="ابحث في الملاحظات أو التصنيف..." oninput="txSearchText=this.value;renderTx()"></div>
+  <button type="button" class="btn secondary" onclick="exportCSV()">تصدير CSV</button>
+</div>
+<div class="filters" id="txFilters"><button class="active" data-filter="all">الكل</button><button data-filter="income">الدخل</button><button data-filter="expense">المصروفات</button><button data-filter="saving">الادخار</button></div><div class="card" id="txList"></div></section>
+<section id="fixed" class="view"><div class="section-head"><h3>الالتزامات الثابتة</h3><button type="button" class="btn" onclick="openFixed()">+ إضافة</button></div><div class="notice">نحجز قيمة الالتزامات قبل حساب ما يمكنك صرفه بحرية.</div><div id="fixedList"></div></section>
+<section id="goals" class="view"><div class="section-head"><h3>أهداف الادخار</h3><button type="button" class="btn" onclick="openGoal()">+ هدف</button></div><div id="goalList"></div></section>
+<section id="more" class="view"><div class="section-head"><h3>إدارة الميزانية</h3></div><div class="card"><b>خطة الدخل</b><div class="allocation"><div><b id="baseSalaryView"></b><span class="muted">راتب يوم 19</span></div><div><b id="sideTargetView"></b><span class="muted">دخل خاص مستهدف</span></div><div><b id="cycleDayView"></b><span class="muted">بداية الدورة</span></div><div><b id="bufferTargetView"></b><span class="muted">هدف احتياطي</span></div></div></div><div class="card"><div class="row"><div><b>خطة المليون المضمون</b><div class="muted" style="margin-top:4px">تتغير تلقائيًا عند إضافة أو حذف أي التزام ثابت.</div></div><span class="chip">ديناميكية</span></div><div class="allocation"><div><b id="planFixed">0</b><span class="muted">ثوابت</span></div><div><b id="planLiving">0</b><span class="muted">معيشة شهرية</span></div><div><b id="planReserve">0</b><span class="muted">احتياطي</span></div><div><b id="planSaving">0</b><span class="muted">ادخار أدنى</span></div></div><div class="notice" id="planNote" style="margin-top:10px"></div></div>
+
+<div class="section" id="planningTools">
+  <div class="section-head"><h3>أدوات التخطيط</h3><span class="chip">جديد</span></div>
+  <div class="plan-tabs" id="planningTabs">
+    <button class="active" data-plan="envelopes">المغلفات</button>
+    <button data-plan="seasonal">الموسمية</button>
+  </div>
+  <div id="envelopesPanel" style="margin-top:10px">
+    <div class="card"><div class="row"><div><b>مغلفات الصرف</b><div class="muted">حدد سقفًا شهريًا لكل فئة، والبرنامج يتابع المستهلك والمتبقي تلقائيًا.</div></div><button type="button" class="btn secondary" onclick="openEnvelope()">+ مغلف</button></div></div>
+    <div id="envelopeList"></div>
+  </div>
+  <div id="seasonalPanel" style="display:none;margin-top:10px">
+    <div class="card"><div class="row"><div><b>مصاريف موسمية</b><div class="muted">حوّل المصاريف الكبيرة السنوية إلى حجز شهري صغير بدل أن تفاجئك.</div></div><button type="button" class="btn secondary" onclick="openSeasonal()">+ مصروف موسمي</button></div></div>
+    <div id="seasonalList"></div>
+  </div>
+</div>
+
+<div class="section" id="debtTools">
+  <div class="section-head"><h3>الديون والسلف</h3><button type="button" class="btn secondary" onclick="openDebt()">+ إضافة</button></div>
+  <div class="card">
+    <div class="allocation">
+      <div><b id="iOweTotal">0</b><span class="muted">عليّ للآخرين</span></div>
+      <div><b id="owedToMeTotal">0</b><span class="muted">لي عند الآخرين</span></div>
+      <div><b id="debtNet">0</b><span class="muted">الصافي</span></div>
+      <div><b id="debtCount">0</b><span class="muted">سجلات نشطة</span></div>
+    </div>
+  </div>
+  <div id="debtList"></div>
+</div>
+
+<div class="section">
+  <div class="section-head"><h3>الأمان والنسخ الاحتياطي</h3></div>
+  <div class="card security-card">
+    <div class="row"><div><b>قفل التطبيق برمز PIN</b><div class="muted">قفل محلي يمنع فتح الواجهة بدون الرمز على هذا الجهاز.</div></div><span class="chip" id="pinStatusChip">غير مفعل</span></div>
+    <div class="actions">
+      <button type="button" class="btn secondary" onclick="openPinSetup()">إعداد / تغيير PIN</button>
+      <button type="button" class="btn danger" onclick="disablePin()">إلغاء القفل</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="backup-health">
+      <div class="ico">↥</div>
+      <div class="grow"><b>صحة النسخة الاحتياطية</b><div class="muted" id="backupHealthText">لم يتم إنشاء نسخة احتياطية بعد.</div></div>
+      <span class="chip" id="backupHealthChip">تنبيه</span>
+    </div>
+    <div class="actions"><button type="button" class="btn secondary" onclick="backup()">إنشاء نسخة الآن</button></div>
+  </div>
+</div>
+<div class="card">
+  <div class="row"><div><b>مظهر احترافي قابل للتخصيص</b><div class="muted">يمكنك تغيير الخلفية والوضع الداكن من الإعدادات بدون فقدان أي بيانات.</div></div><span class="chip">جديد</span></div>
+</div>
+<div class="card"><b>نسخة احتياطية</b><div class="actions"><button type="button" class="btn secondary" onclick="backup()">تصدير JSON</button><button type="button" class="btn secondary" onclick="document.getElementById('restoreInput').click()">استعادة</button></div><input id="restoreInput" type="file" accept=".json" hidden onchange="restoreBackup(event)"></div><div class="card"><b>قاعدة توزيع الدخل الخاص</b><div class="allocation" id="rulePreview"></div></div></section>
+</main><button class="fab" onclick="openExpense()">+</button><nav><div class="bar"><button class="active" onclick="showView('home',this)"><b>⌂</b>الرئيسية</button><button onclick="showView('transactions',this)"><b>↕</b>الحركات</button><button onclick="showView('fixed',this)"><b>📌</b>الثابتة</button><button onclick="showView('goals',this)"><b>◎</b>الادخار</button><button onclick="showView('more',this)"><b>⋯</b>المزيد</button></div></nav></div><div class="undo-toast" id="undoToast"><span id="undoText">تم الحذف</span><button onclick="undoLastDelete()">تراجع</button></div><div class="modal" id="modal"><div class="sheet" id="sheet"></div></div>
+<script>
+const KEY='mizaniBudget.v1';const D={settings:{cycleDay:19,baseSalary:1000000,sideTarget:2000000,emergencyTarget:3000000,baseLivingBudget:300000,theme:'ocean',darkMode:false,outerBg:'sky',customOuterBg:'#eaf3f8',allocation:{saving:35,reserve:25,needs:25,flex:15}},tx:[],fixed:[],goals:[],envelopes:[],seasonal:[],debts:[]};let S=load(),txFilter='all',txSearchText='',lastDeleted=null,undoTimer=null;seedFixedDefaults();
+function load(){try{let x=JSON.parse(localStorage.getItem(KEY)||'{}');return {...D,...x,settings:{...D.settings,...(x.settings||{}),allocation:{...D.settings.allocation,...((x.settings||{}).allocation||{})}}}}catch(e){return structuredClone(D)}}function ensurePlanningState(){if(!Array.isArray(S.envelopes))S.envelopes=[];if(!Array.isArray(S.seasonal))S.seasonal=[];if(!Array.isArray(S.debts))S.debts=[];}
+function $(id){return document.getElementById(id)}
+function save(){localStorage.setItem(KEY,JSON.stringify(S));render()}function seedFixedDefaults(){if(S.settings.fixedSeeded)return;if(!S.fixed||S.fixed.length===0){S.fixed=[{id:'fuel-default',name:'وقود',amount:120000,dueDay:19,category:'وقود',active:true},{id:'meat-default',name:'لحوم',amount:70000,dueDay:19,category:'طعام',active:true},{id:'subs-default',name:'اشتراكات',amount:70000,dueDay:19,category:'اشتراكات',active:true}]}S.settings.fixedSeeded=true;localStorage.setItem(KEY,JSON.stringify(S))}function id(){return crypto.randomUUID?crypto.randomUUID():Date.now()+Math.random()}function fmt(n){return Math.round(+n||0).toLocaleString('en-US')+' د.ع'}function dateISO(d=new Date()){return d.toISOString().slice(0,10)}function parseDate(s){let[y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)}function currentCycle(){let n=new Date(),day=S.settings.cycleDay||19,s=new Date(n.getFullYear(),n.getMonth(),day);if(n<s)s=new Date(n.getFullYear(),n.getMonth()-1,day);let e=new Date(s.getFullYear(),s.getMonth()+1,day-1,23,59,59);return{start:s,end:e}}function inCycle(t){let c=currentCycle(),d=parseDate(t.date);return d>=c.start&&d<=c.end}function cycleTx(type){return S.tx.filter(t=>inCycle(t)&&(!type||t.type===type))}function sum(type){return cycleTx(type).reduce((a,t)=>a+(+t.amount||0),0)}function income(){return sum('income')}function expense(){return sum('expense')}function saved(){return sum('saving')}function paidFixed(){return new Set(cycleTx('expense').filter(t=>t.fixedId).map(t=>t.fixedId))}function fixedRemaining(){let p=paidFixed();return S.fixed.filter(f=>f.active!==false&&!p.has(f.id)).reduce((a,f)=>a+(+f.amount||0),0)}function sideReceived(){return cycleTx('income').filter(t=>t.source==='side').reduce((a,t)=>a+(+t.amount||0),0)}
+function sideSpent(){return cycleTx('expense').filter(t=>t.sourceWallet==='side').reduce((a,t)=>a+(+t.amount||0),0)}
+function sideBalance(){return Math.max(0,sideReceived()-sideSpent())}
+function variableRemaining(){return Math.max(0,S.settings.sideTarget-sideReceived())}function balance(){return income()-expense()-saved()}function safe(){return Math.max(0,balance()-fixedRemaining())}function daysLeft(){return Math.max(1,Math.ceil((currentCycle().end-new Date())/86400000))}function cycleLabel(){let c=currentCycle();return c.start.toLocaleDateString('ar-IQ')+' — '+c.end.toLocaleDateString('ar-IQ')}function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+
+function applyAppearance(){
+  document.body.dataset.theme=S.settings.theme||'sage';
+  document.body.classList.toggle('dark',!!S.settings.darkMode);
+  const ob=S.settings.outerBg||'auto';
+  if(ob==='auto') document.body.removeAttribute('data-outer-bg');
+  else document.body.dataset.outerBg=ob;
+  document.documentElement.style.setProperty('--custom-outer-bg',S.settings.customOuterBg||'#eef4f2');
+  let meta=document.querySelector('meta[name="theme-color"]');
+  if(meta){
+    const colors={sage:'#0e766e',ocean:'#146b8c',sand:'#8a6535',graphite:'#465a65'};
+    meta.setAttribute('content',S.settings.darkMode?'#111d21':(colors[S.settings.theme]||colors.sage));
+  }
+}
+function cycleWeekRange(){
+  const c=currentCycle(),now=new Date();
+  const days=Math.max(0,Math.floor((now-c.start)/86400000));
+  const idx=Math.floor(days/7);
+  const start=new Date(c.start);start.setDate(start.getDate()+idx*7);start.setHours(0,0,0,0);
+  const end=new Date(start);end.setDate(end.getDate()+6);end.setHours(23,59,59,999);
+  if(end>c.end)end.setTime(c.end.getTime());
+  return{start,end};
+}
+function weekFlexibleSpent(){
+  const w=cycleWeekRange();
+  return S.tx.filter(t=>t.type==='expense'&&!t.fixedId&&parseDate(t.date)>=w.start&&parseDate(t.date)<=w.end)
+    .reduce((a,t)=>a+(+t.amount||0),0);
+}
+function renderProfessionalMeters(plan){
+  const spent=weekFlexibleSpent(),limit=Math.max(0,plan.weekly||0);
+  const pct=limit?Math.round(spent/limit*100):(spent?100:0);
+  weekSpent.textContent=fmt(spent);weekLimit.textContent=fmt(limit);
+  weekRemaining.textContent=fmt(Math.max(0,limit-spent));weekPercent.textContent=pct+'%';
+  const bar=Math.min(100,pct);weekProgress.querySelector('i').style.width=bar+'%';
+  weekProgress.classList.toggle('warnbar',pct>80&&pct<=100);
+  weekProgress.classList.toggle('dangerbar',pct>100);
+  weekStatusChip.textContent=pct<=80?'ممتاز':pct<=100?'قريب من الحد':'تجاوز الحد';
+  weekStatusChip.className='chip '+(pct>100?'red':pct>80?'yellow':'');
+  const receivePct=Math.min(100,Math.round(sideReceived()/(S.settings.sideTarget||1)*100));
+  const spendPct=sideReceived()?Math.min(100,Math.round(sideSpent()/sideReceived()*100)):0;
+  sideReceivePercent.textContent=receivePct+'%';sideReceiveBar.style.width=receivePct+'%';
+  sideSpendPercent.textContent=spendPct+'%';sideSpendBar.style.width=spendPct+'%';
+  sideSpendBar.parentElement.classList.toggle('warnbar',spendPct>70&&spendPct<=90);
+  sideSpendBar.parentElement.classList.toggle('dangerbar',spendPct>90);
+}
+
+function totalExpectedIncome(){return (+S.settings.baseSalary||0)+(+S.settings.sideTarget||0)}
+function fixedPaidAmount(){
+  const ids=paidFixed();
+  return S.fixed.filter(f=>ids.has(f.id)).reduce((a,f)=>a+(+f.amount||0),0)
+}
+function variableSpend(){
+  return cycleTx('expense').filter(t=>!t.fixedId).reduce((a,t)=>a+(+t.amount||0),0)
+}
+function prevCycleRange(){
+  const c=currentCycle(),day=S.settings.cycleDay||19;
+  const end=new Date(c.start);end.setDate(end.getDate()-1);end.setHours(23,59,59,999);
+  const start=new Date(end.getFullYear(),end.getMonth()-1,day);
+  if(start>end)start.setMonth(start.getMonth()-1);
+  return{start,end}
+}
+function rangeSum(type,r){
+  return S.tx.filter(t=>t.type===type&&parseDate(t.date)>=r.start&&parseDate(t.date)<=r.end)
+    .reduce((a,t)=>a+(+t.amount||0),0)
+}
+function renderSmartFinance(plan){
+  const alerts=[];
+  const wSpent=weekFlexibleSpent(),wLimit=Math.max(0,plan.weekly||0);
+  const wPct=wLimit?wSpent/wLimit*100:0;
+  if(wPct>100) alerts.push({c:'bada',i:'!',t:'تجاوزت الحد الأسبوعي',d:`صرفك المرن هذا الأسبوع ${fmt(wSpent)}، أي أعلى من الحد المخطط بمقدار ${fmt(wSpent-wLimit)}.`});
+  else if(wPct>=80) alerts.push({c:'warna',i:'⚠',t:'اقتربت من الحد الأسبوعي',d:`استخدمت ${Math.round(wPct)}% من ميزانية الأسبوع. المتبقي ${fmt(Math.max(0,wLimit-wSpent))}.`});
+  const unpaid=fixedRemaining();
+  if(unpaid>0) alerts.push({c:'warna',i:'📌',t:'التزامات غير مدفوعة',d:`ما زال ${fmt(unpaid)} محجوزًا للالتزامات الثابتة في هذه الدورة.`});
+  const sideR=sideReceived(),sideS=sideSpent();
+  if(sideR>0 && sideS/sideR>=.75) alerts.push({c:'warna',i:'◉',t:'استهلاك مرتفع من الدخل الخاص',d:`صرفت ${Math.round(sideS/sideR*100)}% من المبلغ المستلم فعليًا من المليونين.`});
+  if(sideR===0) alerts.push({c:'gooda',i:'✓',t:'الخطة لا تعتمد على المليونين قبل وصولهما',d:'أي دخل خاص جديد لن يدخل في المتاح إلا بعد تسجيل استلامه فعليًا.'});
+  if(daysSinceBackup()>=14) alerts.push({c:'warna',i:'↥',t:'النسخة الاحتياطية تحتاج تحديث',d:'مرّ أسبوعان أو أكثر على آخر نسخة احتياطية، أو لم تُنشئ نسخة بعد.'});
+  if(!alerts.length) alerts.push({c:'gooda',i:'✓',t:'الوضع ضمن الخطة',d:'لا توجد تنبيهات مالية مهمة حاليًا.'});
+  smartAlerts.innerHTML=alerts.slice(0,3).map(a=>`<div class="smart-alert ${a.c}"><div class="ico">${a.i}</div><div><b>${a.t}</b><div class="muted">${a.d}</div></div></div>`).join('');
+
+  const expected=Math.max(1,totalExpectedIncome()),pct=Math.min(100,Math.round(income()/expected*100));
+  incomeRing.style.setProperty('--p',pct);incomeRingText.textContent=pct+'%';
+  sumIncome.textContent=fmt(income());sumVariableSpend.textContent=fmt(variableSpend());
+  sumFixedPaid.textContent=fmt(fixedPaidAmount());sumSaving.textContent=fmt(saved());
+
+  let status='مستقر',txt='الوضع المالي ضمن الخطة',cls='';
+  if(wPct>100 || balance()-fixedRemaining()<0){status='بحاجة انتباه';txt='هناك ضغط على السيولة أو تجاوز للحد';cls='bad'}
+  else if(wPct>=80 || fixedRemaining()>safe()){status='راقب المصروف';txt='اقتربت من أحد حدود الخطة';cls='warn'}
+  cycleHealth.textContent=status;cycleHealth.className='chip '+(cls==='bad'?'red':cls==='warn'?'yellow':'');
+  cycleDot.className='dot '+cls;cycleStatusText.textContent=txt;
+
+  const pr=prevCycleRange(),pe=rangeSum('expense',pr),ps=rangeSum('saving',pr);
+  if(pe>0){
+    const diff=expense()-pe,pc=Math.round(Math.abs(diff)/pe*100);
+    compareExpense.textContent=(diff===0?'نفس المستوى':(diff>0?'أعلى ':'أقل ')+pc+'%');
+    compareExpenseNote.textContent=`الحالية ${fmt(expense())} • السابقة ${fmt(pe)}`;
+  }else{compareExpense.textContent='لا توجد بيانات كافية';compareExpenseNote.textContent='ستظهر المقارنة بعد توفر دورة سابقة'}
+  if(ps>0){
+    const diff=saved()-ps,pc=Math.round(Math.abs(diff)/ps*100);
+    compareSaving.textContent=(diff===0?'نفس المستوى':(diff>0?'أعلى ':'أقل ')+pc+'%');
+    compareSavingNote.textContent=`الحالية ${fmt(saved())} • السابقة ${fmt(ps)}`;
+  }else{compareSaving.textContent='لا توجد بيانات كافية';compareSavingNote.textContent='ستظهر المقارنة بعد توفر دورة سابقة'}
+}
+function showUndo(message){
+  undoText.textContent=message;undoToast.classList.add('show');
+  clearTimeout(undoTimer);undoTimer=setTimeout(()=>undoToast.classList.remove('show'),5000)
+}
+function deleteTransaction(tid){
+  const idx=S.tx.findIndex(t=>t.id===tid);if(idx<0)return;
+  if(!confirm('حذف هذه الحركة؟'))return;
+  lastDeleted={tx:S.tx[idx],index:idx};
+  S.tx.splice(idx,1);localStorage.setItem(KEY,JSON.stringify(S));render();showUndo('تم حذف الحركة')
+}
+function undoLastDelete(){
+  if(!lastDeleted)return;
+  S.tx.splice(Math.min(lastDeleted.index,S.tx.length),0,lastDeleted.tx);
+  lastDeleted=null;localStorage.setItem(KEY,JSON.stringify(S));undoToast.classList.remove('show');render()
+}
+function editTransaction(tid){
+  const t=S.tx.find(x=>x.id===tid);if(!t)return;
+  showModal(`<h3>تعديل الحركة</h3>
+  <label>المبلغ</label><input id="etAmt" type="number" value="${+t.amount||0}">
+  <label>التاريخ</label><input id="etDate" type="date" value="${t.date}">
+  <label>التصنيف</label><input id="etCat" value="${esc(t.category||'')}">
+  <label>الملاحظة</label><textarea id="etNote">${esc(t.note||'')}</textarea>
+  <div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="saveEditedTransaction('${tid}')">حفظ التعديل</button></div>`)
+}
+function saveEditedTransaction(tid){
+  const t=S.tx.find(x=>x.id===tid);if(!t)return;
+  const a=+$('etAmt').value;if(!a)return alert('أدخل المبلغ');
+  t.amount=a;t.date=$('etDate').value;t.category=$('etCat').value;t.note=$('etNote').value.trim();
+  save();closeModal()
+}
+
+function cycleElapsedDays(){const c=currentCycle(),now=new Date();return Math.max(1,Math.ceil((Math.min(now,c.end)-c.start+1)/86400000))}
+function averageDailyVariableSpend(){return currentVariableSpend()/cycleElapsedDays()}
+function currentVariableSpend(){return cycleTx('expense').filter(t=>!t.fixedId).reduce((a,t)=>a+(+t.amount||0),0)}
+function projectedEndBalance(){return safeSpend()-averageDailyVariableSpend()*cycleDaysLeft()}
+function envelopeSpent(env){return cycleTx('expense').filter(t=>!t.fixedId&&String(t.category||'').trim()===String(env.category||'').trim()).reduce((a,t)=>a+(+t.amount||0),0)}
+function monthsUntil(month){const now=new Date(),cur=now.getMonth()+1;let d=month-cur;if(d<0)d+=12;return d}
+function envelopeCard(env,full){
+  const spent=envelopeSpent(env),budget=+env.budget||0,remaining=Math.max(0,budget-spent),pct=budget?Math.min(100,Math.round(spent/budget*100)):0;
+  return `<div class="envelope"><div class="envelope-head"><div><b>${esc(env.name||env.category)}</b><small>${esc(env.category||'')}</small></div><span class="chip ${pct>=100?'red':pct>=80?'yellow':''}">${pct}%</span></div><div class="amt">${fmt(remaining)}</div><small>متبقي من ${fmt(budget)}</small><div class="progress ${pct>=100?'dangerbar':pct>=80?'warnbar':''}"><i style="width:${pct}%"></i></div>${full?`<div class="actions"><button type="button" class="btn secondary" onclick="editEnvelope('${env.id}')">تعديل</button><button type="button" class="btn danger" onclick="deleteEnvelope('${env.id}')">حذف</button></div>`:''}</div>`
+}
+function seasonalRow(s,full){
+  const months=monthsUntil(+s.month||12),target=+s.amount||0,monthly=target/Math.max(1,months||1),monthName=new Date(2026,(+s.month||1)-1,1).toLocaleString('ar-IQ',{month:'long'});
+  return `<div class="seasonal-item"><div><b>${esc(s.name)}</b><div class="muted">${monthName} • الهدف ${fmt(target)} • حجز مقترح ${fmt(monthly)}/شهر</div>${full?`<div class="tx-actions"><button class="linkbtn" onclick="editSeasonal('${s.id}')">تعديل</button><button class="linkbtn danger" onclick="deleteSeasonal('${s.id}')">حذف</button></div>`:''}</div><span class="badge-months">${months===0?'هذا الشهر':months+' شهر'}</span></div>`
+}
+function renderPlanning(plan){
+  ensurePlanningState();
+  const avg=averageDailyVariableSpend(),proj=avg*cycleDaysLeft(),end=projectedEndBalance();
+  forecastAmount.textContent=fmt(end);forecastAmount.className='forecast-number '+(end<0?'forecast-bad':end<100000?'forecast-warn':'forecast-good');
+  forecastChip.textContent=end<0?'ضغط متوقع':end<100000?'هامش ضيق':'وضع جيد';forecastChip.className='chip '+(end<0?'red':end<100000?'yellow':'');
+  forecastNote.textContent=end<0?'بهذا المعدل ستحتاج لتقليل الصرف أو زيادة الدخل الفعلي قبل نهاية الدورة.':'التقدير يتغير تلقائيًا كلما سجلت حركة جديدة.';
+  avgDailySpend.textContent=fmt(avg);projectedSpend.textContent=fmt(proj);forecastSafeNow.textContent=fmt(safeSpend());forecastDays.textContent=cycleDaysLeft()+' يوم';
+  envelopePreview.innerHTML=S.envelopes.length?S.envelopes.slice(0,4).map(e=>envelopeCard(e,false)).join(''):'<div class="card plan-empty" style="grid-column:1/-1">لم تضف مغلفات بعد.</div>';
+  envelopeList.innerHTML=S.envelopes.length?S.envelopes.map(e=>envelopeCard(e,true)).join(''):'<div class="card plan-empty">لا توجد مغلفات.</div>';
+  const seas=S.seasonal.slice().sort((a,b)=>(a.month||12)-(b.month||12));
+  seasonalPreview.innerHTML=seas.length?seas.slice(0,3).map(s=>seasonalRow(s,false)).join(''):'<div class="plan-empty">لا توجد مصاريف موسمية بعد.</div>';
+  seasonalList.innerHTML=seas.length?seas.map(s=>seasonalRow(s,true)).join(''):'<div class="card plan-empty">لا توجد مصاريف موسمية.</div>';
+}
+function openEnvelope(envId){
+  const e=envId?S.envelopes.find(x=>x.id===envId):null;
+  showModal(`<h3>${e?'تعديل':'إضافة'} مغلف</h3><label>اسم المغلف</label><input id="envName" value="${esc(e?.name||'')}" placeholder="مثال: طعام"><label>التصنيف المرتبط</label><input id="envCat" value="${esc(e?.category||'')}" placeholder="مثال: طعام"><label>السقف الشهري</label><input id="envBudget" type="number" value="${e?.budget||''}"><div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="saveEnvelope('${envId||''}')">حفظ</button></div>`)
+}
+function saveEnvelope(envId){const name=$('envName').value.trim(),cat=$('envCat').value.trim(),budget=+$('envBudget').value;if(!name||!cat||!budget)return alert('أكمل البيانات');if(envId){Object.assign(S.envelopes.find(x=>x.id===envId),{name,category:cat,budget})}else S.envelopes.push({id:id(),name,category:cat,budget});save();closeModal()}
+function editEnvelope(x){openEnvelope(x)} function deleteEnvelope(x){if(confirm('حذف المغلف؟')){S.envelopes=S.envelopes.filter(e=>e.id!==x);save()}}
+function openSeasonal(sid){
+  const s=sid?S.seasonal.find(x=>x.id===sid):null;
+  const opts=Array.from({length:12},(_,i)=>`<option value="${i+1}" ${(s?.month==i+1)?'selected':''}>${new Date(2026,i,1).toLocaleString('ar-IQ',{month:'long'})}</option>`).join('');
+  showModal(`<h3>${s?'تعديل':'إضافة'} مصروف موسمي</h3><label>الاسم</label><input id="seaName" value="${esc(s?.name||'')}" placeholder="مثال: صيانة السيارة"><label>المبلغ المتوقع</label><input id="seaAmt" type="number" value="${s?.amount||''}"><label>الشهر المتوقع</label><select id="seaMonth">${opts}</select><div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="saveSeasonal('${sid||''}')">حفظ</button></div>`)
+}
+function saveSeasonal(sid){const name=$('seaName').value.trim(),amount=+$('seaAmt').value,month=+$('seaMonth').value;if(!name||!amount)return alert('أكمل البيانات');if(sid){Object.assign(S.seasonal.find(x=>x.id===sid),{name,amount,month})}else S.seasonal.push({id:id(),name,amount,month});save();closeModal()}
+function editSeasonal(x){openSeasonal(x)} function deleteSeasonal(x){if(confirm('حذف المصروف الموسمي؟')){S.seasonal=S.seasonal.filter(s=>s.id!==x);save()}}
+
+async function hashPin(pin){
+  if(window.crypto&&crypto.subtle){
+    const b=new TextEncoder().encode('mizani-pin-v1:'+pin);
+    const h=await crypto.subtle.digest('SHA-256',b);
+    return Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,'0')).join('')
+  }
+  let h=2166136261;for(const c of ('mizani-pin-v1:'+pin)){h^=c.charCodeAt(0);h=Math.imul(h,16777619)}return String(h>>>0)
+}
+function lockIfNeeded(){
+  const screen=$('lockScreen'),pin=$('unlockPin');
+  if(S.settings.pinHash){screen?.classList.add('show');setTimeout(()=>pin?.focus(),150)}
+  else screen?.classList.remove('show')
+}
+async function unlockApp(){
+  const pin=$('unlockPin').value.trim();
+  if((await hashPin(pin))===S.settings.pinHash){$('lockScreen').classList.remove('show');$('unlockPin').value='';$('unlockMessage').textContent=''}
+  else{$('unlockMessage').textContent='الرمز غير صحيح';$('unlockPin').value=''}
+}
+function openPinSetup(){
+  showModal(`<h3>إعداد رمز PIN</h3><div class="notice">استخدم 4 إلى 6 أرقام. هذا قفل محلي للواجهة وليس تشفيرًا لبيانات المتصفح.</div>
+  <label>PIN جديد</label><input id="newPin" type="password" inputmode="numeric" maxlength="6" placeholder="4-6 أرقام">
+  <label>تأكيد PIN</label><input id="confirmPin" type="password" inputmode="numeric" maxlength="6">
+  <div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="savePin()">حفظ</button></div>`)
+}
+async function savePin(){
+  const a=$('newPin').value.trim(),b=$('confirmPin').value.trim();
+  if(!/^\d{4,6}$/.test(a))return alert('PIN يجب أن يكون من 4 إلى 6 أرقام');
+  if(a!==b)return alert('الرمزان غير متطابقين');
+  S.settings.pinHash=await hashPin(a);save();closeModal();alert('تم تفعيل القفل')
+}
+function disablePin(){
+  if(!S.settings.pinHash)return;
+  const v=prompt('أدخل PIN الحالي لإلغاء القفل');if(v===null)return;
+  hashPin(v).then(h=>{if(h!==S.settings.pinHash)return alert('PIN غير صحيح');delete S.settings.pinHash;save();alert('تم إلغاء القفل')})
+}
+function daysSinceBackup(){
+  if(!S.settings.lastBackupAt)return Infinity;
+  return Math.floor((Date.now()-S.settings.lastBackupAt)/86400000)
+}
+function renderSecurity(){
+  const enabled=!!S.settings.pinHash;
+  pinStatusChip.textContent=enabled?'مفعل':'غير مفعل';pinStatusChip.className='chip '+(enabled?'':'yellow');
+  const d=daysSinceBackup();
+  if(!isFinite(d)){backupHealthText.textContent='لم يتم إنشاء نسخة احتياطية بعد.';backupHealthChip.textContent='مطلوب';backupHealthChip.className='chip red'}
+  else if(d>=14){backupHealthText.textContent=`آخر نسخة قبل ${d} يوم. يُفضّل إنشاء نسخة جديدة.`;backupHealthChip.textContent='قديمة';backupHealthChip.className='chip yellow'}
+  else{backupHealthText.textContent=d===0?'تم إنشاء نسخة احتياطية اليوم.':`آخر نسخة قبل ${d} يوم.`;backupHealthChip.textContent='جيدة';backupHealthChip.className='chip'}
+}
+function debtRemaining(d){return Math.max(0,(+d.amount||0)-(+d.paid||0))}
+function activeDebts(){return S.debts.filter(d=>debtRemaining(d)>0)}
+function renderDebts(){
+  ensurePlanningState();
+  const active=activeDebts(),owe=active.filter(d=>d.direction==='owe').reduce((a,d)=>a+debtRemaining(d),0),owed=active.filter(d=>d.direction==='owed').reduce((a,d)=>a+debtRemaining(d),0);
+  iOweTotal.textContent=fmt(owe);owedToMeTotal.textContent=fmt(owed);debtNet.textContent=fmt(owed-owe);debtCount.textContent=active.length;
+  debtPreview.innerHTML=active.length?active.slice(0,4).map(d=>debtCard(d,false)).join(''):'<div class="card plan-empty" style="grid-column:1/-1">لا توجد ديون أو سلف نشطة.</div>';
+  debtList.innerHTML=S.debts.length?S.debts.map(d=>debtCard(d,true)).join(''):'<div class="card plan-empty">لا توجد سجلات.</div>';
+  renderUpcomingMoneyDates()
+}
+function debtCard(d,full){
+  const rem=debtRemaining(d),pct=(+d.amount||0)?Math.min(100,Math.round((+d.paid||0)/(+d.amount||1)*100)):0;
+  return `<div class="debt-card"><div class="topline"><div><b>${esc(d.person||'بدون اسم')}</b><small>${d.direction==='owe'?'عليّ له':'لي عنده'}${d.dueDate?' • '+d.dueDate:''}</small></div><span class="chip ${d.direction==='owe'?'yellow':''}">${d.direction==='owe'?'عليّ':'لي'}</span></div><div class="remain">${fmt(rem)}</div><small>متبقي من ${fmt(d.amount)}${d.note?' • '+esc(d.note):''}</small><div class="progress"><i style="width:${pct}%"></i></div>${full?`<div class="actions"><button type="button" class="btn secondary" onclick="recordDebtPayment('${d.id}')">تسجيل دفعة</button><button type="button" class="btn secondary" onclick="openDebt('${d.id}')">تعديل</button><button type="button" class="btn danger" onclick="deleteDebt('${d.id}')">حذف</button></div>`:''}</div>`
+}
+function openDebt(did){
+  const d=did?S.debts.find(x=>x.id===did):null;
+  showModal(`<h3>${d?'تعديل':'إضافة'} دين / سلفة</h3>
+    <label>النوع</label><select id="debtDirection"><option value="owe" ${d?.direction==='owe'?'selected':''}>أنا مدين لشخص</option><option value="owed" ${d?.direction==='owed'?'selected':''}>شخص مدين لي</option></select>
+    <label>الاسم</label><input id="debtPerson" value="${esc(d?.person||'')}" placeholder="اسم الشخص">
+    <div class="form-grid"><div><label>المبلغ الأصلي</label><input id="debtAmount" type="number" value="${d?.amount||''}"></div><div><label>المدفوع حتى الآن</label><input id="debtPaid" type="number" value="${d?.paid||0}"></div></div>
+    <label>تاريخ الاستحقاق (اختياري)</label><input id="debtDue" type="date" value="${d?.dueDate||''}">
+    <label>ملاحظة</label><textarea id="debtNote">${esc(d?.note||'')}</textarea>
+    <div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="saveDebt('${did||''}')">حفظ</button></div>`)
+}
+function saveDebt(did){
+  const person=$('debtPerson').value.trim(),amount=+$('debtAmount').value,paid=+$('debtPaid').value||0;
+  if(!person||!amount)return alert('أدخل الاسم والمبلغ');
+  const obj={direction:$('debtDirection').value,person,amount,paid:Math.min(paid,amount),dueDate:$('debtDue').value,note:$('debtNote').value.trim()};
+  if(did)Object.assign(S.debts.find(x=>x.id===did),obj);else S.debts.push({id:id(),...obj});
+  save();closeModal()
+}
+function recordDebtPayment(did){
+  const d=S.debts.find(x=>x.id===did);if(!d)return;
+  const rem=debtRemaining(d),v=+(prompt(`المتبقي ${fmt(rem)}. أدخل قيمة الدفعة:`)||0);if(!v)return;
+  d.paid=Math.min(+d.amount,(+d.paid||0)+v);save()
+}
+function deleteDebt(did){if(confirm('حذف سجل الدين/السلفة؟')){S.debts=S.debts.filter(x=>x.id!==did);save()}}
+function renderUpcomingMoneyDates(){
+  const now=new Date(),limit=new Date(now);limit.setDate(limit.getDate()+30);const items=[];
+  for(const f of S.fixed||[]){
+    if(f.active===false)continue;
+    let due=new Date(now.getFullYear(),now.getMonth(),Math.min(+f.dueDay||1,28));
+    if(due<now)due=new Date(now.getFullYear(),now.getMonth()+1,Math.min(+f.dueDay||1,28));
+    if(due<=limit)items.push({date:due,label:f.name,amount:+f.amount||0,type:'التزام ثابت'})
+  }
+  for(const d of activeDebts()){
+    if(!d.dueDate)continue;const due=parseDate(d.dueDate);
+    if(due>=new Date(now.getFullYear(),now.getMonth(),now.getDate())&&due<=limit)items.push({date:due,label:d.person,amount:debtRemaining(d),type:d.direction==='owe'?'دين عليّ':'دين لي'})
+  }
+  items.sort((a,b)=>a.date-b.date);
+  upcomingMoneyDates.innerHTML=items.length?items.slice(0,6).map(x=>`<div class="due-item"><div><b>${esc(x.label)}</b><div class="muted">${x.type} • ${x.date.toLocaleDateString('ar-IQ')}</div></div><div class="amount">${fmt(x.amount)}</div></div>`).join(''):'<div class="empty">لا توجد مواعيد مالية خلال 30 يومًا.</div>'
+}
+function dynamicSalaryPlan(){const salary=Number(S.settings.baseSalary||0),fixed=S.fixed.filter(f=>f.active!==false).reduce((a,f)=>a+Number(f.amount||0),0);let remaining=Math.max(0,salary-fixed);const saving=Math.min(300000,remaining);remaining-=saving;const reserve=Math.min(140000,remaining);remaining-=reserve;const living=Math.max(0,remaining);return{salary,fixed,saving,reserve,living,weekly:living/30*7,daily:living/30,shortage:Math.max(0,fixed-salary)}}function render(){applyAppearance();let plan=dynamicSalaryPlan();safeSpend.textContent=fmt(safe());cycleText.textContent=cycleLabel();daysLeftEl().textContent=daysLeft()+' يوم';receivedIncome.textContent=fmt(income());spentTotal.textContent=fmt(expense());savedTotal.textContent=fmt(saved());fixedRemainingEl().textContent=fmt(fixedRemaining());variableRemainingEl().textContent=fmt(variableRemaining());dailySafe.textContent=fmt(safe()/daysLeft());weeklySafe.textContent=fmt((safe()/daysLeft())*7);plannedWeekly.textContent=fmt(plan.weekly);savingRate.textContent=(income()?Math.round(saved()/income()*100):0)+'%';planFixed.textContent=Number(Math.round(plan.fixed)).toLocaleString('en-US');planLiving.textContent=Number(Math.round(plan.living)).toLocaleString('en-US');planReserve.textContent=Number(Math.round(plan.reserve)).toLocaleString('en-US');planSaving.textContent=Number(Math.round(plan.saving)).toLocaleString('en-US');planNote.innerHTML=plan.shortage>0?`⚠️ الالتزامات الثابتة أعلى من الراتب المضمون بمقدار <b>${fmt(plan.shortage)}</b>. نحتاج تغطية الفرق من الدخل الخاص.`:`بعد حجز الثوابت والادخار الأدنى والاحتياطي، ميزانية المعيشة هي <b>${fmt(plan.living)}</b>، أي نحو <b>${fmt(plan.weekly)} أسبوعيًا</b> أو <b>${fmt(plan.daily)} يوميًا</b>. أي التزام ثابت جديد سيعيد الحساب تلقائيًا.`;baseSalaryView.textContent=Number(S.settings.baseSalary).toLocaleString('en-US');sideTargetView.textContent=Number(S.settings.sideTarget).toLocaleString('en-US');cycleDayView.textContent=S.settings.cycleDay;bufferTargetView.textContent=Number(S.settings.emergencyTarget).toLocaleString('en-US');
+sideReceivedView.textContent=fmt(sideReceived());
+sideSpentView.textContent=fmt(sideSpent());
+sideBalanceView.textContent=fmt(sideBalance());
+sideTargetRemainView.textContent=fmt(variableRemaining());
+renderProfessionalMeters(plan);renderSmartFinance(plan);renderPlanning(plan);renderDebts();renderSecurity();renderSideExpenses();renderFixed();renderGoals();renderTx();renderAdvisor();renderRules()}function daysLeftEl(){return document.getElementById('daysLeft')}function fixedRemainingEl(){return document.getElementById('fixedRemaining')}function variableRemainingEl(){return document.getElementById('variableRemaining')}
+function renderFixed(){let cards=S.fixed.map(f=>{let paid=paidFixed().has(f.id);return `<div class="card"><div class="row"><div><b>${esc(f.name)}</b><div class="muted">يوم ${f.dueDay} • ${esc(f.category||'التزامات')}</div></div><div><div class="amount">${fmt(f.amount)}</div><span class="chip ${paid?'':'yellow'}">${paid?'مدفوع':'غير مدفوع'}</span></div></div>${paid?'':`<button class="linkbtn" onclick="payFixed('${f.id}')">تسجيل كمدفوع</button>`}</div>`}).join('');fixedList.innerHTML=cards||'<div class="card empty">لا توجد التزامات ثابتة.</div>';upcomingFixed.innerHTML=S.fixed.slice(0,4).map(f=>`<div class="card"><div class="row"><div><b>${esc(f.name)}</b><div class="muted">موعده يوم ${f.dueDay}</div></div><b>${fmt(f.amount)}</b></div></div>`).join('')||'<div class="card empty">أضف التزاماتك الثابتة.</div>'}
+function renderGoals(){let html=S.goals.map(g=>{let p=Math.min(100,Math.round((g.saved||0)/(g.target||1)*100));return `<div class="card"><div class="row"><div><b>${esc(g.name)}</b><div class="muted">${fmt(g.saved||0)} من ${fmt(g.target)}</div></div><span class="chip">${p}%</span></div><div class="progress"><i style="width:${p}%"></i></div><div class="actions"><button type="button" class="btn secondary" onclick="fundGoal('${g.id}')">إضافة ادخار</button><button type="button" class="btn danger" onclick="delGoal('${g.id}')">حذف</button></div></div>`}).join('');goalList.innerHTML=html||'<div class="card empty">لا توجد أهداف ادخار.</div>';goalPreview.innerHTML=S.goals.slice(0,2).map(g=>`<div class="card"><div class="row"><b>${esc(g.name)}</b><span class="chip">${Math.min(100,Math.round((g.saved||0)/(g.target||1)*100))}%</span></div></div>`).join('')||'<div class="card empty">أضف هدفًا مثل صندوق طوارئ.</div>'}
+function renderSideExpenses(){
+  let l=cycleTx('expense').filter(t=>t.sourceWallet==='side').sort((a,b)=>(b.date+(b.created||0)).localeCompare(a.date+(a.created||0))).slice(0,6);
+  sideExpenseList.innerHTML=l.length?l.map(t=>`<div class="tx"><div class="tx-icon">−</div><div><b>${esc(t.note||t.category||'صرف من الدخل الخاص')}</b><div class="muted">${t.date}${t.category?' • '+esc(t.category):''}${t.sourceWallet==='side'?' • من الدخل الخاص':''}</div></div><div class="amount danger">${fmt(t.amount)}</div></div>`).join(''):'<div class="empty">لم تسجل صرفًا من المليونين حتى الآن.</div>';
+}
+function renderTx(){
+  let l=S.tx.slice().sort((a,b)=>(b.date+(b.created||0)).localeCompare(a.date+(a.created||0)));
+  if(txFilter!=='all')l=l.filter(t=>t.type===txFilter);
+  const q=(txSearchText||'').trim().toLowerCase();
+  if(q)l=l.filter(t=>[t.note,t.category,t.source,t.sourceWallet,t.date,String(t.amount)].some(v=>String(v||'').toLowerCase().includes(q)));
+  txCountChip.textContent=l.length+' حركة';
+  txList.innerHTML=l.length?l.map(t=>`<div class="tx">
+    <div class="tx-icon">${t.type==='income'?'＋':t.type==='saving'?'◎':'−'}</div>
+    <div><b>${esc(t.note||t.type)}</b><div class="muted">${t.date}${t.category?' • '+esc(t.category):''}${t.sourceWallet==='side'?' • من الدخل الخاص':''}</div></div>
+    <div style="text-align:left"><div class="amount ${t.type==='income'?'good':t.type==='expense'?'danger':'blue'}">${t.type==='income'?'+':'−'}${fmt(t.amount)}</div>
+    <button class="tx-more" onclick="openTransactionMenu('${t.id}')">⋯</button></div>
+  </div>`).join(''):'<div class="empty">لا توجد حركات مطابقة.</div>'
+}
+function openTransactionMenu(tid){
+  const t=S.tx.find(x=>x.id===tid);if(!t)return;
+  showModal(`<h3>خيارات الحركة</h3><div class="card" style="box-shadow:none"><b>${esc(t.note||t.type)}</b><div class="muted">${t.date} • ${fmt(t.amount)}</div></div>
+  <div class="actions"><button type="button" class="btn secondary" onclick="editTransaction('${tid}')">تعديل</button><button type="button" class="btn danger" onclick="closeModal();deleteTransaction('${tid}')">حذف</button></div>`)
+}
+function renderAdvisor(){let l=cycleTx('income').filter(t=>t.source==='side').sort((a,b)=>(b.created||0)-(a.created||0))[0];if(!l){incomeAdvisorWrap.innerHTML='';return}let r=S.settings.allocation,a=+l.amount;incomeAdvisorWrap.innerHTML=`<div class="section"><div class="section-head"><h3>اقتراح توزيع آخر دخل خاص</h3></div><div class="card"><b>${fmt(a)}</b><div class="allocation"><div><b>${fmt(a*r.saving/100)}</b><span class="muted">ادخار ${r.saving}%</span></div><div><b>${fmt(a*r.reserve/100)}</b><span class="muted">احتياطي ${r.reserve}%</span></div><div><b>${fmt(a*r.needs/100)}</b><span class="muted">احتياجات ${r.needs}%</span></div><div><b>${fmt(a*r.flex/100)}</b><span class="muted">مرن ${r.flex}%</span></div></div><button type="button" class="btn secondary" onclick="applyAllocation('${l.id}')">تطبيق التوزيع</button></div></div>`}function renderRules(){let r=S.settings.allocation;rulePreview.innerHTML=[['ادخار',r.saving],['احتياطي',r.reserve],['احتياجات',r.needs],['مرن',r.flex]].map(x=>`<div><b>${x[1]}%</b><span class="muted">${x[0]}</span></div>`).join('')}
+function showView(id,b){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');if(b){document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}render()}function showModal(h){sheet.innerHTML=h;modal.classList.add('show')}function closeModal(){modal.classList.remove('show')}modal.addEventListener('click',e=>{if(e.target===modal)closeModal()})
+function openIncome(){showModal(`<h3>إضافة دخل</h3><label>المبلغ</label><input id="iAmt" type="number"><label>المصدر</label><select id="iSource"><option value="side">العمل الخاص</option><option value="salary">الراتب</option><option value="other">دخل آخر</option></select><label>التاريخ</label><input id="iDate" type="date" value="${dateISO()}"><label>ملاحظة</label><input id="iNote"><div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="addIncome()">حفظ</button></div>`)}function addIncome(){const a=+$('iAmt').value;if(!a)return alert('أدخل المبلغ');S.tx.push({id:id(),type:'income',amount:a,source:$('iSource').value,date:$('iDate').value,note:$('iNote').value||'دخل',created:Date.now()});save();closeModal()}
+function openSideExpense(){
+  showModal(`<h3>صرف من المليونين</h3>
+  <div class="notice">المتاح حاليًا من الدخل الخاص بعد المصروفات المسجلة: <b>${fmt(sideBalance())}</b></div>
+  <label>المبلغ</label><input id="seAmt" type="number" inputmode="numeric" placeholder="مثال: 50000">
+  <label>التصنيف</label><select id="seCat"><option>منزل</option><option>وقود</option><option>طعام</option><option>سيارة</option><option>عائلة</option><option>ترفيه</option><option>مشتريات</option><option>صحة</option><option>أخرى</option></select>
+  <label>التاريخ</label><input id="seDate" type="date" value="${dateISO()}">
+  <label>تعليق: صرفت على ماذا؟</label><textarea id="seNote" placeholder="مثال: شراء ملابس للأطفال، صيانة السيارة، غداء عائلي..."></textarea>
+  <div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="addSideExpense()">حفظ المصروف</button></div>`)
+}
+function addSideExpense(){
+  const a=+$('seAmt').value;
+  if(!a)return alert('أدخل المبلغ');
+  if(a>sideBalance())return alert('المبلغ أكبر من المتاح حاليًا من الدخل الخاص. سجّل الدفعة المستلمة أولًا ثم أضف المصروف.');
+  const cat=$('seCat').value;
+  S.tx.push({id:id(),type:'expense',amount:a,category:cat,date:$('seDate').value,note:$('seNote').value.trim()||cat,sourceWallet:'side',created:Date.now()});
+  save();closeModal()
+}
+function openExpense(){showModal(`<h3>إضافة مصروف</h3><label>المبلغ</label><input id="eAmt" type="number"><label>التصنيف</label><select id="eCat"><option>منزل</option><option>وقود</option><option>طعام</option><option>اشتراكات</option><option>سيارة</option><option>عائلة</option><option>ترفيه</option><option>أخرى</option></select><label>التاريخ</label><input id="eDate" type="date" value="${dateISO()}"><label>ملاحظة</label><input id="eNote"><div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="addExpense()">حفظ</button></div>`)}function addExpense(){const a=+$('eAmt').value;if(!a)return alert('أدخل المبلغ');const cat=$('eCat').value;S.tx.push({id:id(),type:'expense',amount:a,category:cat,date:$('eDate').value,note:$('eNote').value||cat,created:Date.now()});save();closeModal()}
+function openFixed(){showModal(`<h3>التزام ثابت</h3><label>الاسم</label><input id="fName"><label>المبلغ</label><input id="fAmt" type="number"><label>يوم الاستحقاق</label><input id="fDay" type="number" value="19"><label>التصنيف</label><input id="fCat"><div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="addFixed()">حفظ</button></div>`)}function addFixed(){const name=$('fName').value.trim(),amount=+$('fAmt').value;if(!name||!amount)return alert('أكمل البيانات');S.fixed.push({id:id(),name,amount,dueDay:+$('fDay').value||1,category:$('fCat').value,active:true});save();closeModal()}function payFixed(fid){let f=S.fixed.find(x=>x.id===fid);S.tx.push({id:id(),type:'expense',amount:+f.amount,category:f.category||'التزامات',date:dateISO(),note:f.name,fixedId:f.id,created:Date.now()});save()}
+function openGoal(){showModal(`<h3>هدف ادخار</h3><label>الاسم</label><input id="gName"><label>المبلغ المستهدف</label><input id="gTarget" type="number"><label>الموجود حاليًا</label><input id="gSaved" type="number" value="0"><div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="addGoal()">حفظ</button></div>`)}function addGoal(){const name=$('gName').value.trim(),target=+$('gTarget').value;if(!name||!target)return alert('أكمل البيانات');S.goals.push({id:id(),name,target,saved:+$('gSaved').value||0});save();closeModal()}function fundGoal(gid){let g=S.goals.find(x=>x.id===gid),v=+prompt('كم تريد تحويله؟');if(!v)return;g.saved=(g.saved||0)+v;S.tx.push({id:id(),type:'saving',amount:v,date:dateISO(),note:'ادخار: '+g.name,goalId:g.id,created:Date.now()});save()}function delGoal(gid){if(confirm('حذف الهدف؟')){S.goals=S.goals.filter(x=>x.id!==gid);save()}}
+function applyAllocation(tid){let t=S.tx.find(x=>x.id===tid),r=S.settings.allocation,a=+t.amount,s=Math.round(a*r.saving/100),q=Math.round(a*r.reserve/100);if(confirm('سيتم تسجيل '+fmt(s+q)+' كادخار واحتياطي.')){S.tx.push({id:id(),type:'saving',amount:s,date:dateISO(),note:'ادخار من دخل خاص',created:Date.now()});S.tx.push({id:id(),type:'saving',amount:q,date:dateISO(),note:'احتياطي نقدي',created:Date.now()});save()}}
+function openSettings(){let r=S.settings.allocation;showModal(`<h3>الإعدادات</h3>
+<div class="card" style="box-shadow:none">
+  <b>المظهر</b><div class="muted">اختر لون الخلفية والطابع العام للتطبيق.</div>
+  <label>لون التطبيق</label>
+  <select id="sTheme">
+    <option value="sage" ${S.settings.theme==='sage'?'selected':''}>زمردي هادئ</option>
+    <option value="ocean" ${S.settings.theme==='ocean'?'selected':''}>أزرق احترافي</option>
+    <option value="sand" ${S.settings.theme==='sand'?'selected':''}>رملي دافئ</option>
+    <option value="graphite" ${S.settings.theme==='graphite'?'selected':''}>رمادي فخم</option>
+  </select>
+  <div class="switch-row"><div><b>الوضع الداكن</b><div class="muted">مريح للاستخدام ليلًا</div></div><input id="sDark" type="checkbox" ${S.settings.darkMode?'checked':''}></div>
+  <label>لون الخلفية الخارجية</label>
+  <select id="sOuterBg" onchange="toggleCustomOuterBg()">
+    <option value="auto" ${(S.settings.outerBg||'auto')==='auto'?'selected':''}>تلقائي حسب الثيم</option>
+    <option value="mist" ${S.settings.outerBg==='mist'?'selected':''}>رمادي ضبابي</option>
+    <option value="sky" ${S.settings.outerBg==='sky'?'selected':''}>أزرق فاتح</option>
+    <option value="mint" ${S.settings.outerBg==='mint'?'selected':''}>أخضر نعناعي</option>
+    <option value="sandlight" ${S.settings.outerBg==='sandlight'?'selected':''}>بيج هادئ</option>
+    <option value="white" ${S.settings.outerBg==='white'?'selected':''}>أبيض</option>
+    <option value="custom" ${S.settings.outerBg==='custom'?'selected':''}>لون مخصص</option>
+  </select>
+  <div id="customOuterWrap" style="display:${S.settings.outerBg==='custom'?'block':'none'}">
+    <label>اختر اللون المخصص</label>
+    <input id="sCustomOuterBg" type="color" value="${S.settings.customOuterBg||'#eef4f2'}" oninput="previewOuterColor()">
+    <div class="outer-preview" id="outerPreview" style="background:${S.settings.customOuterBg||'#eef4f2'}"></div>
+  </div>
+</div>
+<label>يوم بداية الدورة</label><input id="sDay" type="number" value="${S.settings.cycleDay}"><label>الراتب المضمون</label><input id="sSalary" type="number" value="${S.settings.baseSalary}"><label>الدخل الخاص المستهدف</label><input id="sSide" type="number" value="${S.settings.sideTarget}"><label>هدف صندوق الطوارئ</label><input id="sEmergency" type="number" value="${S.settings.emergencyTarget}"><div class="form-grid"><div><label>ادخار %</label><input id="rSaving" type="number" value="${r.saving}"></div><div><label>احتياطي %</label><input id="rReserve" type="number" value="${r.reserve}"></div><div><label>احتياجات %</label><input id="rNeeds" type="number" value="${r.needs}"></div><div><label>مرن %</label><input id="rFlex" type="number" value="${r.flex}"></div></div><div class="actions"><button type="button" class="btn secondary" onclick="closeModal()">إلغاء</button><button type="button" class="btn" onclick="saveSettings()">حفظ</button></div>`)}
+function toggleCustomOuterBg(){
+  const wrap=$('customOuterWrap'),sel=$('sOuterBg');
+  if(wrap&&sel)wrap.style.display=sel.value==='custom'?'block':'none';
+}
+function previewOuterColor(){
+  const p=$('outerPreview'),c=$('sCustomOuterBg');
+  if(p&&c)p.style.background=c.value;
+}
+function saveSettings(){let v=[+$('rSaving').value,+$('rReserve').value,+$('rNeeds').value,+$('rFlex').value];if(v.reduce((a,b)=>a+b,0)!==100)return alert('المجموع يجب أن يساوي 100%');S.settings={...S.settings,theme:$('sTheme').value,darkMode:$('sDark').checked,outerBg:$('sOuterBg').value,customOuterBg:($('sCustomOuterBg')?.value||S.settings.customOuterBg||'#eef4f2'),cycleDay:+$('sDay').value||19,baseSalary:+$('sSalary').value||0,sideTarget:+$('sSide').value||0,emergencyTarget:+$('sEmergency').value||0,allocation:{saving:v[0],reserve:v[1],needs:v[2],flex:v[3]}};save();closeModal()}
+function backup(){S.settings.lastBackupAt=Date.now();localStorage.setItem(KEY,JSON.stringify(S));dl('mizani-backup-'+dateISO()+'.json',JSON.stringify(S,null,2),'application/json');render()}function restoreBackup(e){let f=e.target.files[0],r=new FileReader();r.onload=()=>{try{S=JSON.parse(r.result);save();alert('تمت الاستعادة')}catch{alert('ملف غير صالح')}};r.readAsText(f)}function exportCSV(){let rows=[['date','type','amount','category','note','source'],...S.tx.map(t=>[t.date,t.type,t.amount,t.category||'',t.note||'',t.sourceWallet==='side'?'side_income':(t.source||'')])];dl('mizani.csv','\ufeff'+rows.map(r=>r.map(x=>'"'+String(x).replaceAll('"','""')+'"').join(',')).join('\\n'),'text/csv')}function dl(n,d,t){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([d],{type:t}));a.download=n;a.click()}
+txFilters.addEventListener('click',e=>{if(e.target.tagName==='BUTTON'){document.querySelectorAll('#txFilters button').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');txFilter=e.target.dataset.filter;renderTx()}});if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});render();lockIfNeeded();
+
+document.getElementById('planningTabs')?.addEventListener('click',e=>{
+  if(e.target.tagName!=='BUTTON')return;
+  document.querySelectorAll('#planningTabs button').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');
+  const mode=e.target.dataset.plan;envelopesPanel.style.display=mode==='envelopes'?'block':'none';seasonalPanel.style.display=mode==='seasonal'?'block':'none';
+});
+
+</script></body></html>
